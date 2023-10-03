@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cck11f3ao4pqy"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_vxtcm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrkio"]
+radius = 2.23607
+
+[node name="Marker" type="Node2D"]
+script = ExtResource("1_vxtcm")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = -25.0
+offset_right = 45.0
+offset_bottom = 1.0
+pivot_offset = Vector2(-5, 25)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "(x, y)"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rrkio")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
