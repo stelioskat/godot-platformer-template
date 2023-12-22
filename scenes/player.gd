@@ -8,7 +8,8 @@ var marker_scene = load("res://util/marker.tscn")
 ## TODO
 @export var jump_velocity : float = -800.0
 ## TODO
-@export var double_jump_velocity : float = -500.0
+@export var can_double_jump : bool = true
+@export var double_jump_velocity : float = -600.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -36,6 +37,8 @@ func _physics_process(delta : float):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		has_double_jumped = false
 	
 	update_jump(delta)
 	
@@ -61,12 +64,15 @@ func add_marker():
 func update_jump(delta : float):
 	if time_since_is_on_floor < 0.1 and time_since_just_pressed_jump < 0.01:
 		velocity.y = jump_velocity
+	elif not double_jump and time_since_just_pressed_jump < 0.01:
+		double_jump()
 	elif Input.is_action_just_released("jump") and (velocity.y < 0):
 		velocity.y = 0.0
 
 func double_jump():
-	has_double_jumped = true
-	velocity.y = double_jump_velocity
+	if can_double_jump:
+		has_double_jumped = true
+		velocity.y = double_jump_velocity
 
 func update_sprite_direction():
 	if direction < 0:
