@@ -64,7 +64,7 @@ func add_marker():
 func update_jump(delta : float):
 	if time_since_is_on_floor < 0.1 and time_since_just_pressed_jump < 0.01:
 		velocity.y = jump_velocity
-	elif not double_jump and time_since_just_pressed_jump < 0.01:
+	elif not has_double_jumped and time_since_just_pressed_jump < 0.01:
 		double_jump()
 	elif Input.is_action_just_released("jump") and (velocity.y < 0):
 		velocity.y = 0.0
