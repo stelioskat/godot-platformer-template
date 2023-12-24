@@ -8,7 +8,7 @@ var marker_scene = load("res://util/marker.tscn")
 ## TODO
 @export var can_wall_jump : bool = true
 ## TODO
-@export var speed : float = 600.0
+@export var speed : float = 500.0
 ## TODO
 @export var jump_velocity : float = -800.0
 ## TODO
@@ -39,11 +39,15 @@ func _physics_process(delta : float):
 	elif direction:
 		velocity.x = move_toward(velocity.x, direction * speed, speed)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed/10)
+		velocity.x = move_toward(velocity.x, 0, speed/5)
 
 	move_and_slide()
 	update_sprite_direction()
-	
+
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		print("Collided with: ", collision.get_collider().name)
+
 	# DEBUG stuff
 	if velocity != dbg_prev_vel:
 		add_marker()
@@ -64,7 +68,7 @@ func update_jump(delta : float):
 		time_since_is_on_floor =  0.0
 		has_double_jumped = false
 		
-	if time_since_is_on_floor < 0.1 and time_since_just_pressed_jump < 0.01:
+	if time_since_is_on_floor < 0.05 and time_since_just_pressed_jump < 0.01:
 		velocity.y = jump_velocity
 	elif not has_double_jumped and not is_on_wall() and time_since_just_pressed_jump < 0.01:
 		double_jump()
@@ -83,7 +87,6 @@ func wall_jump():
 	if can_wall_jump:
 		has_wall_jumped = true 
 		velocity.x = get_wall_normal().x * abs(double_jump_velocity)
-		print(velocity.x)
 		velocity.y = jump_velocity
 	
 func update_sprite_direction():
