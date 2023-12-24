@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dp25vkep5027h"]
 
-[ext_resource type="Texture2D" uid="uid://d2eldke6osdul" path="res://art/basic_tiles.png" id="1_vcnew"]
+[ext_resource type="Texture2D" uid="uid://bfgvygm8eko76" path="res://art/basic_tiles.svg" id="1_0yhsy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qgrjm"]
-texture = ExtResource("1_vcnew")
+texture = ExtResource("1_0yhsy")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -78,6 +78,14 @@ texture_region_size = Vector2i(64, 64)
 3:5/0 = 0
 3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:5/0/physics_layer_0/angular_velocity = 0.0
+0:6/next_alternative_id = 2
+0:6/0 = 0
+0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/0/physics_layer_0/angular_velocity = 0.0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:6/1 = 1
+0:6/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/1/physics_layer_0/angular_velocity = 0.0
 
 [resource]
 tile_size = Vector2i(64, 64)
