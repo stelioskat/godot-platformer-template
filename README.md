@@ -1,9 +1,9 @@
-# Godot 4 basic plattformer template
+# Godot 4 basic platformer template
 
-Just a simple "template" for starting the development of plattformer games. The playable character can:
+Just a simple "template" for starting the development of platformer games. The playable character can:
 
 * jump
 * double jump
 * wall jump
 
-![Preview](preview.png "Basic plattforer")
+![Preview](preview.png "Basic platforer")
